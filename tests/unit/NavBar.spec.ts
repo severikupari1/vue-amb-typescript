@@ -5,7 +5,7 @@ import App from '@/App.vue'
 import store from '@/store'
 import Vuex from 'vuex'
 import { routes } from '@/router/routes'
-import Navbar from "@/components/Navbar.vue";
+import Navbar from '@/components/Navbar.vue'
 
 const localVue = createLocalVue()
 localVue.use(VueRouter)
