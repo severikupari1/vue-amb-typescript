@@ -7,10 +7,12 @@ const config = {
 }
 
 const call = axios.create(config)
+
 call.interceptors.request.use(request => {
   store.dispatch('globalValues/setLoading', true)
   return request
 })
+
 call.interceptors.response.use(
   response => {
     store.dispatch('globalValues/setLoading', false)
@@ -21,4 +23,5 @@ call.interceptors.response.use(
     return error
   }
 )
+
 export default call

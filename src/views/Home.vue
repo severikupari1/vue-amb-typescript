@@ -8,10 +8,10 @@
         :to="'/article/' + post.id"
       >
         <el-card :body-style="{ padding: '0px' }" class="article">
-          <img
-            src="https://scx2.b-cdn.net/gfx/news/hires/2019/2-nature.jpg"
+          <custom-image
             class="image"
-          />
+            image-src="https://scx2.b-cdn.net/gfx/news/hires/2019/2-nature.jpg"
+          ></custom-image>
           <div class="title">
             {{ post.title }}
           </div>
@@ -23,8 +23,12 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 import { namespace } from 'vuex-class'
+import CustomImage from '@/components/CustomImage.vue'
+
 const posts = namespace('posts')
-@Component
+@Component({
+  components: { CustomImage }
+})
 export default class Home extends Vue {
   mounted() {
     this.getAllPosts()

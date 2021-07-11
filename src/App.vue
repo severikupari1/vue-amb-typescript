@@ -19,20 +19,3 @@ export default class App extends Vue {
   public isLoading!: boolean
 }
 </script>
-<style lang="scss">
-body {
-  font-family: 'Raleway', sans-serif;
-  box-sizing: border-box;
-}
-*,
-*::after,
-*::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
-}
-#app {
-  min-height: 100vh;
-  width: 100%;
-}
-</style>

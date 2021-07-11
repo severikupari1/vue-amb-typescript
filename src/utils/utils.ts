@@ -1,10 +1,6 @@
 import { Notification } from 'element-ui'
+import { NotifyObj } from '@/interfaces/NotifyObj'
 
-interface NotifyObj {
-  title: string
-  message: string
-  type: 'success' | 'warning' | 'info' | 'error' | undefined
-}
 function notify(data: NotifyObj) {
   Notification({
     title: data.title,

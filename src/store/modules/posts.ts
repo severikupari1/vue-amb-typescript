@@ -1,44 +1,48 @@
-import { VuexModule, Module, Mutation, Action } from 'vuex-module-decorators'
+import { Action, Module, Mutation, VuexModule } from 'vuex-module-decorators'
 import { notify } from '@/utils/utils'
 import api from '@/api'
-import { Post } from '@/Interfaces/Posts'
-import { ActionContext } from "vuex";
+import { Post } from '@/interfaces/Posts'
+
+const POST_FETCH_COUNT = 5
 
 @Module({ namespaced: true })
 class Posts extends VuexModule {
   public list: Array<Post> = []
   public fetchedList = false
   public post: Post = {
-    title: '',
     id: 0,
+    title: '',
     body: ''
   }
-  context: ActionContext
 
   @Mutation
   public saveList(data: Array<Post>): void {
     this.fetchedList = true
-    this.list = [...this.list, ...data.slice(0, 6)]
+    this.list = [...this.list, ...data.slice(0, POST_FETCH_COUNT + 1)]
   }
+
+  @Mutation
+  public showError(message: string): void {
+    notify({
+      title: 'Error',
+      type: 'error',
+      message: message
+    })
+  }
+
   @Action
-  public getAllPosts(): Promise<boolean> {
+  public async getAllPosts(): Promise<boolean> {
     if (this.fetchedList) {
       return Promise.resolve(true)
     } else {
-      return api
-        .get('/posts')
-        .then(response => {
-          this.context.commit('saveList', response.data)
-          return true
-        })
-        .catch(() => {
-          notify({
-            title: 'Error',
-            type: 'error',
-            message: 'Could not fetch the list'
-          })
-          return false
-        })
+      try {
+        const response = await api.get('/posts')
+        this.context.commit('saveList', response.data)
+        return true
+      } catch (e) {
+        this.context.commit('showError', 'Could not fetch the list')
+        return false
+      }
     }
   }
 
@@ -46,10 +50,11 @@ class Posts extends VuexModule {
   public save(data: Post): void {
     this.post = data
   }
+
   @Action
   public async getPost(id: number): Promise<Post | boolean> {
     if (this.list.length !== 0) {
-      const fetched = await this.list.filter(item => {
+      const fetched = this.list.filter(item => {
         return item.id === id
       })
 
@@ -109,10 +114,17 @@ class Posts extends VuexModule {
         return false
       })
   }
+
   @Mutation
   public create(newPost: Post): void {
+    const maxPost = this.list.reduce(function(prev, current) {
+      return prev.id > current.id ? prev : current
+    })
+    // Change new post id to highest id plus one.
+    newPost.id = maxPost.id + 1
     this.list.unshift(newPost)
   }
+
   @Action
   public async createPost(data: Post): Promise<boolean> {
     return api
@@ -145,6 +157,7 @@ class Posts extends VuexModule {
       return item.id !== id
     })
   }
+
   @Action
   public async deletePost(id: number): Promise<void> {
     return api
@@ -166,4 +179,5 @@ class Posts extends VuexModule {
       })
   }
 }
+
 export default Posts

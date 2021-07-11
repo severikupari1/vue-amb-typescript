@@ -1,13 +1,11 @@
 <template>
   <div class="blog">
-    <h1 class="page-title">Article</h1>
+    <h1 class="page-title">Article {{ article.id }}</h1>
     <div class="main">
-      <div class="banner-container">
-        <img
-          src="https://scx2.b-cdn.net/gfx/news/hires/2019/2-nature.jpg"
-          class="banner"
-        />
-      </div>
+      <custom-image
+        class="image"
+        image-src="https://scx2.b-cdn.net/gfx/news/hires/2019/2-nature.jpg"
+      ></custom-image>
 
       <h1 class="page-title article-title">{{ article.title }}</h1>
       <div class="article-description">{{ article.body }}</div>
@@ -15,19 +13,21 @@
   </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import { namespace } from 'vuex-class'
+import CustomImage from '@/components/CustomImage.vue'
+import { Post } from "@/interfaces/Posts";
+
 const posts = namespace('posts')
-interface ArticleStructure {
-  id: number
-  title: string
-  body: string
-}
+
+@Component({
+  components: { CustomImage }
+})
 @Component
 export default class Article extends Vue {
   public article: object = {}
   @posts.State
-  public list!: Array<ArticleStructure>
+  public list!: Array<Post>
 
   @posts.Action
   public getPost!: (id: number) => Promise<object>

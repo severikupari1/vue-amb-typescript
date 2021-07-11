@@ -19,10 +19,10 @@
   </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import { namespace } from 'vuex-class'
-import { Post } from '@/Interfaces/Posts'
-import { Route } from "vue-router";
+import { Post } from '@/interfaces/Posts'
+
 const posts = namespace('posts')
 @Component
 export default class ModifyItem extends Vue {
@@ -41,7 +41,6 @@ export default class ModifyItem extends Vue {
   public createPost!: (data: Post) => Promise<boolean>
   @posts.Action
   public getPost!: (id: number) => Promise<Post>
-  $route: Route
 
   created() {
     this.postId = +this.$route.params.id
