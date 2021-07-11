@@ -1,5 +1,9 @@
 # ts-vue-severi
 
+This site is published at https://severikupari1.github.io/vue-amb-typescript/
+
+Built storybook for this application found https://severikupari1.github.io/vue-amb-typescript/story/
+
 Mock server used https://jsonplaceholder.typicode.com/
 
 **This is a simple Blog (with CRUD Operation) to showcase the usage of:**
