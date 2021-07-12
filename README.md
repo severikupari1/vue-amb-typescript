@@ -16,8 +16,8 @@ Mock server used https://jsonplaceholder.typicode.com/
 - Code splitting/ Lazy loading
 - Cypress e2e tests -> Demo .gif
   ![Cypress](./src/assets/vue-amb-cypress.gif)
-- Jest component testing
-- Storybook for components https://severikupari1.github.io/vue-amb-typescript/story/
+- Jest component testing [here](tests/unit/NavBar.spec.ts)
+- Storybook for components [here](src/stories/navbar.stories.js)
 ### Styling
 
 - SASS/SCSS pre-processor is used for CSS styling.
