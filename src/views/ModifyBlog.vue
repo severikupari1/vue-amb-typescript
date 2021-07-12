@@ -28,28 +28,28 @@
   </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
-import { namespace } from 'vuex-class'
-const posts = namespace('posts')
+import { Vue, Component } from 'vue-property-decorator';
+import { namespace } from 'vuex-class';
+const posts = namespace('posts');
 @Component
 export default class Home extends Vue {
   mounted() {
-    this.getAllPosts()
+    this.getAllPosts();
   }
   @posts.State
-  public list!: Array<object>
+  public list!: Array<object>;
 
   @posts.Action
-  public getAllPosts!: () => void
+  public getAllPosts!: () => void;
 
   @posts.Action
-  public deletePost!: (id: number) => void
+  public deletePost!: (id: number) => void;
 
   public editArticle(id: number) {
-    this.$router.push({ name: 'edit', params: { id: id.toString() } })
+    this.$router.push({ name: 'edit', params: { id: id.toString() } });
   }
   public deleteArticle(id: number) {
-    this.deletePost(id)
+    this.deletePost(id);
   }
 }
 </script>

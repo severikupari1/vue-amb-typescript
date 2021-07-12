@@ -1,5 +1,5 @@
-import { RouteConfig } from 'vue-router'
-import Home from '@/views/Home.vue'
+import { RouteConfig } from 'vue-router';
+import Home from '@/views/Home.vue';
 
 export const routes: Array<RouteConfig> = [
   {
@@ -36,4 +36,4 @@ export const routes: Array<RouteConfig> = [
     name: 'notFound',
     component: () => import(/* webpackChunkName: "about" */ '@/views/404.vue')
   }
-]
+];

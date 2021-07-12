@@ -1,7 +1,7 @@
 interface Post {
-  title: string
-  id: number
-  body: string
+  title: string;
+  id: number;
+  body: string;
 }
 
-export { Post }
+export { Post };

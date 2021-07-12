@@ -6,7 +6,7 @@ Built storybook for this application found https://severikupari1.github.io/vue-a
 
 Mock server used https://jsonplaceholder.typicode.com/
 
-**This is a simple Blog (with CRUD Operation) to showcase the usage of:**
+**This is a simple article list (with CRUD Operation) to showcase the usage of:**
 
 - Vue
 - Vuex and Modules
@@ -14,7 +14,10 @@ Mock server used https://jsonplaceholder.typicode.com/
 - Typescript (Class based API)
 - Axios
 - Code splitting/ Lazy loading
-
+- Cypress e2e tests -> Demo .gif
+  ![Cypress](./src/assets/vue-amb-cypress.gif)
+- Jest component testing
+- Storybook for components https://severikupari1.github.io/vue-amb-typescript/story/
 ### Styling
 
 - SASS/SCSS pre-processor is used for CSS styling.
@@ -55,7 +58,7 @@ yarn run build
 yarn run test:unit
 ```
 
-### Run your e2e (cypress) tests
+### Run your e2e (cypress) tests in cypress ui
 
 ```
 yarn run test:e2e

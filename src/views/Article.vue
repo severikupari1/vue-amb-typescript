@@ -13,33 +13,33 @@
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import { namespace } from 'vuex-class'
-import CustomImage from '@/components/CustomImage.vue'
-import { Post } from "@/interfaces/Posts";
+import { Component, Vue } from 'vue-property-decorator';
+import { namespace } from 'vuex-class';
+import CustomImage from '@/components/CustomImage.vue';
+import { Post } from '@/interfaces/Posts';
 
-const posts = namespace('posts')
+const posts = namespace('posts');
 
 @Component({
   components: { CustomImage }
 })
 @Component
 export default class Article extends Vue {
-  public article: object = {}
+  public article: object = {};
   @posts.State
-  public list!: Array<Post>
+  public list!: Array<Post>;
 
   @posts.Action
-  public getPost!: (id: number) => Promise<object>
+  public getPost!: (id: number) => Promise<object>;
 
   created() {
-    this.getArticle(+this.$route.params.id)
+    this.getArticle(+this.$route.params.id);
   }
 
   public getArticle(id: number): void {
     this.getPost(id).then(data => {
-      this.article = data
-    })
+      this.article = data;
+    });
   }
 }
 </script>

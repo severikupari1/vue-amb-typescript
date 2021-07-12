@@ -19,47 +19,47 @@
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import { namespace } from 'vuex-class'
-import { Post } from '@/interfaces/Posts'
+import { Component, Vue } from 'vue-property-decorator';
+import { namespace } from 'vuex-class';
+import { Post } from '@/interfaces/Posts';
 
-const posts = namespace('posts')
+const posts = namespace('posts');
 @Component
 export default class ModifyItem extends Vue {
-  public pageTitle?: string = ''
-  public isNew?: boolean = true
-  public postId = 0
+  public pageTitle?: string = '';
+  public isNew?: boolean = true;
+  public postId = 0;
   public formData: Post = {
     title: '',
     id: 0,
     body: ''
-  }
+  };
 
   @posts.Action
-  public editPost!: (data: Post) => Promise<boolean>
+  public editPost!: (data: Post) => Promise<boolean>;
   @posts.Action
-  public createPost!: (data: Post) => Promise<boolean>
+  public createPost!: (data: Post) => Promise<boolean>;
   @posts.Action
-  public getPost!: (id: number) => Promise<Post>
+  public getPost!: (id: number) => Promise<Post>;
 
   created() {
-    this.postId = +this.$route.params.id
+    this.postId = +this.$route.params.id;
     if (!this.postId) {
-      this.pageTitle = 'Create new Article'
+      this.pageTitle = 'Create new Article';
     } else {
-      this.isNew = false
-      this.pageTitle = 'Modify Article'
+      this.isNew = false;
+      this.pageTitle = 'Modify Article';
       this.getPost(this.postId).then(data => {
-        this.formData = data
-      })
+        this.formData = data;
+      });
     }
   }
   public submitForm(): void {
     if (this.isNew) {
-      this.createPost(this.formData)
+      this.createPost(this.formData);
     } else {
-      this.formData.id = this.postId
-      this.editPost(this.formData)
+      this.formData.id = this.postId;
+      this.editPost(this.formData);
     }
   }
 }

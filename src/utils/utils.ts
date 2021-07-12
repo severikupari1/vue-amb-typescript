@@ -1,5 +1,5 @@
-import { Notification } from 'element-ui'
-import { NotifyObj } from '@/interfaces/NotifyObj'
+import { Notification } from 'element-ui';
+import { NotifyObj } from '@/interfaces/NotifyObj';
 
 function notify(data: NotifyObj) {
   Notification({
@@ -8,7 +8,7 @@ function notify(data: NotifyObj) {
     type: data.type,
     offset: 100,
     duration: 5000
-  })
+  });
 }
 
-export { notify }
+export { notify };

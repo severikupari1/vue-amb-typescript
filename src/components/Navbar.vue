@@ -17,8 +17,8 @@
   </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
-import Route from '@/components/Route.vue'
+import { Vue, Component } from 'vue-property-decorator';
+import Route from '@/components/Route.vue';
 @Component({
   components: { Route }
 })

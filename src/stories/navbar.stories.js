@@ -1,11 +1,11 @@
-import { action } from '@storybook/addon-actions'
-import { linkTo } from '@storybook/addon-links'
+import { action } from '@storybook/addon-actions';
+import { linkTo } from '@storybook/addon-links';
 
-import Navbar from '../components/Navbar.vue'
+import Navbar from '../components/Navbar.vue';
 
 export default {
   title: 'Navbar'
-}
+};
 
 export const withNavbar = () => ({
   components: { Navbar },
@@ -15,4 +15,4 @@ export const withNavbar = () => ({
     </template>
   `,
   methods: { action: action('clicked') }
-})
+});

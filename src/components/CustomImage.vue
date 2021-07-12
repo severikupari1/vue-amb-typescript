@@ -2,7 +2,7 @@
   <img :src="imageSrc" :class="className" :alt="alt" />
 </template>
 <script lang="ts">
-import { Vue } from 'vue-property-decorator'
+import { Vue } from 'vue-property-decorator';
 
 export default Vue.component('CustomImage', {
   props: {
@@ -19,5 +19,5 @@ export default Vue.component('CustomImage', {
       default: ''
     }
   }
-})
+});
 </script>

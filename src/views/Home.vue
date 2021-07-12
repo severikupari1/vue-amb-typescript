@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1 class="page-title">Welcome to my Blog</h1>
+    <h1 class="page-title">Article list</h1>
     <div class="card-container">
       <router-link
         v-for="post in list"
@@ -21,23 +21,23 @@
   </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
-import { namespace } from 'vuex-class'
-import CustomImage from '@/components/CustomImage.vue'
+import { Vue, Component } from 'vue-property-decorator';
+import { namespace } from 'vuex-class';
+import CustomImage from '@/components/CustomImage.vue';
 
-const posts = namespace('posts')
+const posts = namespace('posts');
 @Component({
   components: { CustomImage }
 })
 export default class Home extends Vue {
   mounted() {
-    this.getAllPosts()
+    this.getAllPosts();
   }
   @posts.State
-  public list!: Array<object>
+  public list!: Array<object>;
 
   @posts.Action
-  public getAllPosts!: () => void
+  public getAllPosts!: () => void;
 }
 </script>
 <style lang="scss" scoped>

@@ -5,10 +5,10 @@
   </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
-import Navbar from '@/components/Navbar.vue'
-import { namespace } from 'vuex-class'
-const globalValues = namespace('globalValues')
+import { Vue, Component } from 'vue-property-decorator';
+import Navbar from '@/components/Navbar.vue';
+import { namespace } from 'vuex-class';
+const globalValues = namespace('globalValues');
 @Component({
   components: {
     Navbar
@@ -16,6 +16,6 @@ const globalValues = namespace('globalValues')
 })
 export default class App extends Vue {
   @globalValues.State
-  public isLoading!: boolean
+  public isLoading!: boolean;
 }
 </script>
